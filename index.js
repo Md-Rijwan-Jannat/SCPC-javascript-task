@@ -73,3 +73,53 @@ function towNumbers (nums, target) {
 };
 const result = towNumbers([1, 3, 6, 8, 11, 15], 9);
 console.log('the tow numbers are:', result); 
+
+
+
+// Task:6 Create a program that generates a random password of a specified length. The password should include a mix of uppercase letters, lowercase letters, numbers, and special characters.
+
+
+function generateRandomPassword(length) {
+    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+    const numericChars = '0123456789';
+    const specialChars = '@$&';
+  
+    const allChars = uppercaseChars + lowercaseChars + numericChars + specialChars;
+    const passwordArray = [];
+  
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * allChars.length);
+      passwordArray.push(allChars.charAt(randomIndex));
+    }
+  
+    return passwordArray.join('');
+  }
+  
+  // Example usage:
+  const passwordLength = 8;
+  const randomPassword = generateRandomPassword(passwordLength);
+  console.log(randomPassword);
+
+
+  function findSecondSmallestNimber(arr) {
+  
+    let smallest = Infinity;
+    let secondSmallest = Infinity;
+  
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] < smallest) {
+        secondSmallest = smallest;
+        smallest = arr[i];
+      } else if (arr[i] < secondSmallest && arr[i] !== smallest) {
+        secondSmallest = arr[i];
+      }
+    }
+  
+    return secondSmallest;
+  }
+  
+  const numbers = [5, 2, 8, 1, 3,1];
+  const outputSecondSmallest = findSecondSmallestNimber(numbers);
+  console.log("Second smallest number:", outputSecondSmallest);
+
