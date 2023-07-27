@@ -9,7 +9,8 @@ function reverseString(str) {
 }
 const inpuString = 'hello world';
 const oututString = reverseString(inpuString);
-console.log(oututString);
+console.log('Task 1:', oututString);
+
 
 
 
@@ -27,7 +28,8 @@ function sumOfPositiveNumber(arr) {
 
 const array = [2, -5, 10, -3, 7];
 const outputSum = sumOfPositiveNumber(array)
-console.log('Positive number sum:', outputSum);
+console.log('Task 2: Positive number sum:', outputSum);
+
 
 
 
@@ -57,22 +59,39 @@ function findFrequentElement(arr) {
 }
 const inputArray = [3, 5, 2, 5, 3, 3, 1, 4, 5];
 const output = findFrequentElement(inputArray);
-console.log(output);
+console.log('Task 3:', output);
 
 
-// Task 4: Create a function that takes a sorted array of numbers and a target value as input. The function should find two numbers in the array that add up to the target value. Return an array containing the indices of the two numbers.
 
-function towNumbers (nums, target) {
-    for (let i = 0; i <= nums.length; i++) {
-        for (let j = 0; j <= nums.length; j++) {
-            if (nums[i] + nums[j] == target) {
-                return [i, j]
+
+// Task 5: Implement a simple JavaScript calculator. The calculator should take two numbers and an operator (+, -, *, /) as input and return the result of the operation.
+
+function calculate(num1, num2, operator) {
+    switch (operator) {
+        case '+':
+            return num1 + num2;
+        case '-':
+            return num1 - num2;
+        case '*':
+            return num1 * num2;
+        case '/':
+            if (num2 === 0) {
+                return 'Cannot divide by zero';
             }
-        }
+            return num1 / num2;
+        default:
+            return 'Invalid operator';
     }
-};
-const result = towNumbers([1, 3, 6, 8, 11, 15], 9);
-console.log('the tow numbers are:', result); 
+}
+
+const number1 = 10;
+const number2 = 5;
+const operation = '-';  //   use = + - * /
+
+const clculateResult = calculate(number1, number2, operation);
+console.log(`Task 5: Result: ${clculateResult}`);
+
+
 
 
 
@@ -84,42 +103,80 @@ function generateRandomPassword(length) {
     const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
     const numericChars = '0123456789';
     const specialChars = '@$&';
-  
+
     const allChars = uppercaseChars + lowercaseChars + numericChars + specialChars;
     const passwordArray = [];
-  
+
     for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * allChars.length);
-      passwordArray.push(allChars.charAt(randomIndex));
+        const randomIndex = Math.floor(Math.random() * allChars.length);
+        passwordArray.push(allChars.charAt(randomIndex));
     }
-  
+
     return passwordArray.join('');
-  }
-  
-  // Example usage:
-  const passwordLength = 8;
-  const randomPassword = generateRandomPassword(passwordLength);
-  console.log(randomPassword);
+}
+
+const passwordLength = 8;
+const randomPassword = generateRandomPassword(passwordLength);
+console.log('Task 6:', randomPassword);
 
 
-  function findSecondSmallestNimber(arr) {
-  
+
+// Task 7: Implement a function that converts a Roman numeral to an integer. The function should take a Roman numeral string (e.g., "IX" or "XXI") as input and return the corresponding integer value.
+
+function romanToInt(romanNumeral) {
+    const romanMap = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000,
+    };
+
+    let result = 0;
+
+    for (let i = 0; i < romanNumeral.length; i++) {
+        const currentNumeral = romanNumeral[i];
+        const nextNumeral = romanNumeral[i + 1];
+
+        // If the current numeral is smaller than the next numeral, we subtract its value
+        if (romanMap[currentNumeral] < romanMap[nextNumeral]) {
+            result -= romanMap[currentNumeral];
+        } else {
+            result += romanMap[currentNumeral];
+        }
+    }
+
+    return result;
+}
+
+// Test cases
+console.log('Task 7:', romanToInt("IX"), romanToInt("XXI"));
+
+
+
+
+
+//   Task 8: Implement a JavaScript function to find the second smallest element in an array of numbers. The function should return the second smallest number.
+function findSecondSmallestNimber(arr) {
+
     let smallest = Infinity;
     let secondSmallest = Infinity;
-  
+
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i] < smallest) {
-        secondSmallest = smallest;
-        smallest = arr[i];
-      } else if (arr[i] < secondSmallest && arr[i] !== smallest) {
-        secondSmallest = arr[i];
-      }
+        if (arr[i] < smallest) {
+            secondSmallest = smallest;
+            smallest = arr[i];
+        } else if (arr[i] < secondSmallest && arr[i] !== smallest) {
+            secondSmallest = arr[i];
+        }
     }
-  
+
     return secondSmallest;
-  }
-  
-  const numbers = [5, 2, 8, 1, 3,1];
-  const outputSecondSmallest = findSecondSmallestNimber(numbers);
-  console.log("Second smallest number:", outputSecondSmallest);
+}
+
+const numbers = [5, 2, 8, 1, 3, 1];
+const outputSecondSmallest = findSecondSmallestNimber(numbers);
+console.log("Task 8: Second smallest number:", outputSecondSmallest);
 
